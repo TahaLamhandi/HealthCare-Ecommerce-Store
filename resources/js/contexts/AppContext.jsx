@@ -1,5 +1,4 @@
-import React from 'react';
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { fetchBanners, fetchProducts , fetchCategories, fetchPromotions , fetchSlides , fetchSuppliers } from '../services/dataService';
 import { CartProvider } from './CartContext';
 import { FavoritesProvider } from './FavoritesContext';

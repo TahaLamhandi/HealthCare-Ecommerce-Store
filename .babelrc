@@ -1,7 +1,9 @@
 {
   "presets": [
     ["@babel/preset-react", {
-      "runtime": "automatic"
+      "runtime": "classic",
+      "pragma": "React.createElement",
+      "pragmaFrag": "React.Fragment"
     }]
   ]
 }

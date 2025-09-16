@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./categories-animations.css";
 
 /* Custom animations for beautiful dropdowns */
 @keyframes fade-in-up {
@@ -32,7 +33,7 @@
   animation: float 3s ease-in-out infinite;
 }
 
-@custom-variant dark (&:is(.dark *));
+/* Dark mode variant - handled by Tailwind */
 
 :root {
   --background: oklch(1 0 0);
@@ -105,51 +106,20 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
+/* Theme variables - handled by Tailwind */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: var(--ring);
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
   }
 }
 
@@ -334,7 +304,8 @@
 
 /* Modern hover effects */
 .feature-card:hover .feature-icon-container {
-  @apply bg-green-100 scale-110 rotate-6;
+  background-color: #dcfce7;
+  transform: scale(1.1) rotate(6deg);
 }
 
 /* Custom Animation Classes */
@@ -462,7 +433,12 @@
 }
 
 .modern-supplier-card {
-  @apply hover:bg-white hover:shadow-xl hover:-translate-y-2 hover:scale-105;
+  transition: all 0.3s ease;
+}
+.modern-supplier-card:hover {
+  background-color: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px) scale(1.05);
 }
 
 .modern-supplier-card .supplier-logo {
@@ -475,7 +451,11 @@
 }
 
 .simple-testimonial-card {
-  @apply hover:shadow-lg hover:-translate-y-1;
+  transition: all 0.3s ease;
+}
+.simple-testimonial-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
 }
 
 /* Product heart button */
@@ -535,15 +515,16 @@ html {
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .beautiful-product-card {
-    @apply rounded-2xl;
+    border-radius: 1rem;
   }
 
   .simple-testimonial-card {
-    @apply rounded-xl;
+    border-radius: 0.75rem;
   }
 
   .modern-supplier-card {
-    @apply p-4 rounded-2xl;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .floating-leaf {
@@ -553,18 +534,21 @@ html {
 
 /* Loading states */
 .loading-skeleton {
-  @apply animate-pulse bg-gray-200 rounded-3xl;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: #e5e7eb;
+  border-radius: 1.5rem;
 }
 
 /* Focus states for accessibility */
 .focus-modern:focus {
-  @apply outline-none ring-2 ring-green-500 ring-offset-2 ring-offset-white;
+  outline: none;
+  box-shadow: 0 0 0 2px #10b981, 0 0 0 4px white;
 }
 
 /* Print styles */
 @media print {
   .print-hidden {
-    @apply hidden;
+    display: none;
   }
 }
 
@@ -595,8 +579,10 @@ html {
 }
 
 /* Modern focus states */
-.focus-ring-modern {
-  @apply focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500;
+.focus-ring-modern:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
 }
 /* ===== SECTION PRODUITS - CSS COMPLET ===== */
 

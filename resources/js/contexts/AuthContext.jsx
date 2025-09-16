@@ -1,7 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
+// Create the AuthContext
 const AuthContext = createContext();
 
+// Custom hook to use the auth context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -10,6 +12,7 @@ export const useAuth = () => {
   return context;
 };
 
+// AuthProvider component
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,136 +21,156 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token') || localStorage.getItem('auth_token');
     if (token) {
-      // Verify token is still valid by making a request
-      fetch('/api/user', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Token invalid');
-        }
-      })
-      .then(data => {
-        if (data.success) {
-          setUser(data.user);
-        } else {
-          localStorage.removeItem('token');
-          localStorage.removeItem('auth_token');
-        }
-      })
-      .catch(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('auth_token');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      // Verify token with backend
+      verifyToken(token);
     } else {
       setIsLoading(false);
     }
   }, []);
 
-  const login = async (email, password) => {
+  // Verify token with backend
+  const verifyToken = async (token) => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
+      const response = await fetch('/api/user', {
         headers: {
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
+        }
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('auth_token', data.token); // Keep both for compatibility
-        setUser(data.user);
-        return { success: true, user: data.user };
+        const userData = await response.json();
+        setUser(userData);
       } else {
-        // Handle validation errors
-        if (data.errors) {
-          const firstError = Object.values(data.errors)[0];
-          return { success: false, error: Array.isArray(firstError) ? firstError[0] : firstError };
-        }
-        return { success: false, error: data.message };
+        // Token is invalid, remove it
+        localStorage.removeItem('token');
+        localStorage.removeItem('auth_token');
+        setUser(null);
       }
     } catch (error) {
-      return { success: false, error: 'Erreur de connexion' };
+      console.error('Token verification failed:', error);
+      localStorage.removeItem('token');
+      localStorage.removeItem('auth_token');
+      setUser(null);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  // Login function
+  const login = async (email, password) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token || data.access_token;
+        
+        if (token) {
+          localStorage.setItem('token', token);
+          localStorage.setItem('auth_token', token);
+          setUser(data.user || data);
+          return { success: true, user: data.user || data };
+        } else {
+          throw new Error('No token received');
+        }
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      return { success: false, message: error.message };
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Register function
   const register = async (userData) => {
     try {
+      setIsLoading(true);
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.success === true) {
-        localStorage.setItem('auth_token', data.token);
-        setUser(data.user);
-        return { success: true, user: data.user };
-      } else {
-        // Handle validation errors
-        if (data.errors) {
-          const firstError = Object.values(data.errors)[0];
-          const errorMessage = Array.isArray(firstError) ? firstError[0] : firstError;
-          return { success: false, error: errorMessage };
-        }
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token || data.access_token;
         
-        const errorMessage = data.message || 'Erreur d\'inscription';
-        return { success: false, error: errorMessage };
+        if (token) {
+          localStorage.setItem('token', token);
+          localStorage.setItem('auth_token', token);
+          setUser(data.user || data);
+          return { success: true, user: data.user || data };
+        } else {
+          throw new Error('No token received');
+        }
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
       }
     } catch (error) {
-      return { success: false, error: 'Erreur d\'inscription' };
+      console.error('Registration error:', error);
+      return { success: false, message: error.message };
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  // Logout function
   const logout = async () => {
     try {
-      // Call logout API to destroy session on server
-      const token = localStorage.getItem('token') || localStorage.getItem('auth_token');
-      if (token) {
+      // Call logout endpoint if user is authenticated
+      if (user) {
         await fetch('/api/logout', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json',
           },
         });
       }
     } catch (error) {
+      console.error('Logout error:', error);
     } finally {
-      // Clear all local storage and user state
-      localStorage.removeItem('auth_token');
+      // Clear local state and storage
       localStorage.removeItem('token');
+      localStorage.removeItem('auth_token');
       setUser(null);
     }
   };
 
+  // Check if user is authenticated
   const isAuthenticated = () => {
     return !!user;
   };
 
+  // Get user data
+  const getUser = () => {
+    return user;
+  };
+
+  // Context value
   const value = {
     user,
     isLoading,
     login,
     register,
     logout,
-    isAuthenticated
+    isAuthenticated,
+    getUser,
   };
 
   return (
