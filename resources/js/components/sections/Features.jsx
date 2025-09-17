@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Leaf, Shield, Truck, Award, Heart, Star, CheckCircle, Sparkles } from "lucide-react";
-import '../../../css/app.css';
 
 export default function Features({ visibleSections }) {
   const [hoveredFeature, setHoveredFeature] = useState(null);

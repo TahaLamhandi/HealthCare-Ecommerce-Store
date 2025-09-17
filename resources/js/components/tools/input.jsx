@@ -1,7 +1,6 @@
 import React from 'react';
 import { forwardRef } from "react"
 import { cn } from "../../../lib/utils"
-import '../../../css/app.css';
 
 
 const Input = forwardRef(({ className, type, ...props }, ref) => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../css/app.css';
 import { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Shield, Star, Sparkles, Leaf, CheckCircle } from 'lucide-react';

@@ -4,7 +4,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../tools/avatar.jsx";
 import { useFavorites } from "../../contexts/FavoritesContext.js";
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import '../../../css/app.css';
 
 export default function Testimonials({ visibleSections }) {
   const [currentIndex, setCurrentIndex] = useState(0);

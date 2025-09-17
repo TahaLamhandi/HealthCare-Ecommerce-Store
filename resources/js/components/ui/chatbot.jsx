@@ -4,7 +4,6 @@ import { useCart } from "../../contexts/CartContext.js";
 import { useFavorites } from "../../contexts/FavoritesContext.js";
 import { Button } from "../tools/button";
 import { Input } from "../tools/input";
-import '../../../css/app.css';
 
 
 export default function Chatbot({

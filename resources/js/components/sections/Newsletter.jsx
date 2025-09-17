@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Mail, Leaf, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
-import '../../../css/app.css';
 
 export default function Newsletter({ newsletterEmail, setNewsletterEmail }) {
   const [isSubmitting, setIsSubmitting] = useState(false);

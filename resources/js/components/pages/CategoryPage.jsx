@@ -6,7 +6,6 @@ import { useCart } from '../../contexts/CartContext.js';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import { Heart, Star, ShoppingCart, ArrowLeft, Leaf } from 'lucide-react';
-import '../../../css/app.css';
 
 export default function CategoryPage({ categoryName, onNavigateBack }) {
   const { products, categories, loading } = useContext(AppContext);

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tous les Produits - BioEkleel</title>
+    @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/main.jsx'])
 </head>
 <body>
@@ -14,8 +15,8 @@
     <script>
         // Pass data to React
         window.pageData = {
-            page: 'products',
-            title: 'Tous les Produits'
+            page: 'produits',
+            title: 'Tous les Produits (FR)'
         };
     </script>
 </body>

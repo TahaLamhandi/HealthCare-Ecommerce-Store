@@ -1,7 +1,6 @@
 import React from 'react';
 import { forwardRef } from "react"
 import { cn } from "../../../lib/utils"
-import '../../../css/app.css';
 
 const Card = forwardRef(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)} {...props} />

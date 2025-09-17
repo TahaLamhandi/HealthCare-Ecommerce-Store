@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from '../../contexts/AppContext.js';
-import '../../../css/app.css';
 
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
