@@ -3,7 +3,7 @@ import '../../../css/app.css';
 import { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Shield, Star, Sparkles, Leaf, CheckCircle } from 'lucide-react';
-import { AppContext } from '../../contexts/AppContext';
+import { AppContext } from '../../contexts/AppContext.js';
 
 export default function Suppliers({ visibleSections }) {
   const { suppliers, loading } = useContext(AppContext);

@@ -4,7 +4,7 @@ import {
   X, ShoppingCart, Trash2, Plus, Minus, 
   Truck, CreditCard, CheckCircle, Sparkles
 } from 'lucide-react';
-import { useCart } from '../contexts/CartContext';
+import { useCart } from '../contexts/CartContext.js';
 
 const CartPopup = ({ isOpen, onClose }) => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();

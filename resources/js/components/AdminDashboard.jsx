@@ -25,7 +25,7 @@ import {
     Menu,
     X
 } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext.js';
 import ProductsManagement from './admin/ProductsManagement';
 import CategoriesManagement from './admin/CategoriesManagement';
 import PromotionsManagement from './admin/PromotionsManagement';

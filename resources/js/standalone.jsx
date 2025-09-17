@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import { AppProvider } from './contexts/AppContext';
-import { FavoritesProvider } from './contexts/FavoritesContext';
-import { CartProvider } from './contexts/CartContext';
+import { AppProvider } from './contexts/AppContext.js';
+import { FavoritesProvider } from './contexts/FavoritesContext.js';
+import { CartProvider } from './contexts/CartContext.js';
 import HomePage from './pages/HomePage';
 
 const App = () => {

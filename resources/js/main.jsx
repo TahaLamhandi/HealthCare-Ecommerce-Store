@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext, Suspense, lazy } from 'react';
 import './bootstrap';
 import '../css/app.css';
 import { createRoot } from 'react-dom/client';
-import { AuthProvider } from './contexts/AuthContext';
-import { AppProvider } from './contexts/AppContext';
-import { FavoritesProvider } from './contexts/FavoritesContext';
-import { CartProvider } from './contexts/CartContext';
+import { AuthProvider } from './contexts/AuthContext.js';
+import { AppProvider, AppContext } from './contexts/AppContext.js';
+import { FavoritesProvider } from './contexts/FavoritesContext.js';
+import { CartProvider } from './contexts/CartContext.js';
 import { AnimatePresence, motion } from 'framer-motion';
 import HomePage from './pages/HomePage.jsx';
 import AllCategories from './pages/AllCategories.jsx';
@@ -30,7 +30,8 @@ function AppContent() {
     const [pageData, setPageData] = useState({});
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { loading } = useContext(AppContext);
+    const appContext = useContext(AppContext);
+    const { loading } = appContext || { loading: true };
 
     useEffect(() => {
         const initialPageData = window.pageData || { page: 'home' };
@@ -140,15 +141,15 @@ function AppContent() {
 // Main App wrapper with providers
 function App() {
   return (
-        <AuthProvider>
-    <AppProvider>
-      <FavoritesProvider>
-        <CartProvider>
-                        <AppContent />
-        </CartProvider>
-      </FavoritesProvider>
-    </AppProvider>
-        </AuthProvider>
+    <AuthProvider>
+      <AppProvider>
+        <FavoritesProvider>
+          <CartProvider>
+            <AppContent />
+          </CartProvider>
+        </FavoritesProvider>
+      </AppProvider>
+    </AuthProvider>
   );
 }
 

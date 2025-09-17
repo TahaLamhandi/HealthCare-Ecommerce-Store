@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Gift, Sparkles, ArrowRight } from "lucide-react";
-import { AppContext } from '../../contexts/AppContext';
+import { AppContext } from '../../contexts/AppContext.js';
 
 export default function PromotionsSlider({ visibleSections, navigateTo }) {
   const { promotions: dbPromotions, loading } = useContext(AppContext);

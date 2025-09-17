@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
-import { useFavorites } from "../../contexts/FavoritesContext";
+import { useFavorites } from "../../contexts/FavoritesContext.js";
 import { Button } from "../tools/button";
 
 export default function Footer({ navigateTo }) {

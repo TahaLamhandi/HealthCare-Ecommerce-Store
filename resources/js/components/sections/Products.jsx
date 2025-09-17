@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Leaf, Heart, ShoppingCart, Star, AlertCircle } from "lucide-react";
 import { Button } from "../tools/button";
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
-import { useCart } from "../../contexts/CartContext";
-import { useFavorites } from "../../contexts/FavoritesContext";
-import { useAuth } from "../../contexts/AuthContext";
+import { AppContext } from '../../contexts/AppContext.js';
+import { useCart } from "../../contexts/CartContext.js";
+import { useFavorites } from "../../contexts/FavoritesContext.js";
+import { useAuth } from "../../contexts/AuthContext.js";
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
 

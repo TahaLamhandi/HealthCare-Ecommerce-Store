@@ -4,9 +4,9 @@ import {
   Star, Heart, ShoppingCart, ArrowLeft, Trophy, 
   Flame, TrendingUp, Award, Zap, Crown, Search, Filter, Leaf
 } from 'lucide-react';
-import { useCart } from '../contexts/CartContext';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext.js';
+import { useFavorites } from '../contexts/FavoritesContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const BestSellersPage = ({ navigateTo }) => {
   const { addToCart } = useCart();

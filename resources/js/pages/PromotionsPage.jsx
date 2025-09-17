@@ -4,9 +4,9 @@ import {
   Star, Heart, ShoppingCart, ArrowLeft, Tag, 
   Flame, Percent, Clock, Zap, Gift, ChevronLeft, ChevronRight, Search, Filter, Sparkles, X
 } from 'lucide-react';
-import { useCart } from '../contexts/CartContext';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext.js';
+import { useFavorites } from '../contexts/FavoritesContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const PromotionsPage = ({ navigateTo }) => {
   const { addToCart } = useCart();

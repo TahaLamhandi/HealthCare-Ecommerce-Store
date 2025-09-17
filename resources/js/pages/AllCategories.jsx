@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Package, ArrowRight, Search } from 'lucide-react';
-import { AppContext } from '../contexts/AppContext';
+import { AppContext } from '../contexts/AppContext.js';
 import Header from '../components/layouts/Header';
 import Footer from '../components/layouts/Footer';
 

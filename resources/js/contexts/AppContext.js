@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { fetchBanners, fetchProducts , fetchCategories, fetchPromotions , fetchSlides , fetchSuppliers } from '../services/dataService';
-import { CartProvider } from './CartContext';
-import { FavoritesProvider } from './FavoritesContext';
+import { CartProvider } from './CartContext.js';
+import { FavoritesProvider } from './FavoritesContext.js';
 
 export const AppContext = createContext();
 
@@ -383,13 +383,17 @@ export const AppProvider = ({ children }) => {
     loadData();
   }, []);
 
-  return (
-    <AppContext.Provider value={{ banners, products, categories, promotions, slides, suppliers, loading }}>
-      <CartProvider>
-        <FavoritesProvider>
-          {children}
-        </FavoritesProvider>
-      </CartProvider>
-    </AppContext.Provider>
+  return React.createElement(
+    AppContext.Provider,
+    { value: { banners, products, categories, promotions, slides, suppliers, loading } },
+    React.createElement(
+      CartProvider,
+      null,
+      React.createElement(
+        FavoritesProvider,
+        null,
+        children
+      )
+    )
   );
 };

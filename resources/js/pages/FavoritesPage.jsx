@@ -4,9 +4,9 @@ import {
   Heart, Trash2, Eye, Star, ArrowLeft,
   ShoppingCart, Package
 } from 'lucide-react';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { useCart } from '../contexts/CartContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useFavorites } from '../contexts/FavoritesContext.js';
+import { useCart } from '../contexts/CartContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const FavoritesPage = ({ navigateTo }) => {
   const { favorites, removeFavorite, refreshTrigger } = useFavorites();

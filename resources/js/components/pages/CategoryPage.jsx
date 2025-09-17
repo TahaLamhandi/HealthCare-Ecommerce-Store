@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
-import { useFavorites } from '../../contexts/FavoritesContext';
-import { useCart } from '../../contexts/CartContext';
+import { AppContext } from '../../contexts/AppContext.js';
+import { useFavorites } from '../../contexts/FavoritesContext.js';
+import { useCart } from '../../contexts/CartContext.js';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import { Heart, Star, ShoppingCart, ArrowLeft, Leaf } from 'lucide-react';

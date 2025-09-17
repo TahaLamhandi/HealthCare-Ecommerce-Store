@@ -5,10 +5,10 @@ import { Heart, ShoppingCart, Search, Menu, X, ChevronDown, Phone, Mail, MapPin,
 import { Button } from '../tools/button';
 import { Badge } from '../tools/badge';
 import { Input } from '../tools/input';
-import { AppContext } from "../../contexts/AppContext";
-import { useAuth } from "../../contexts/AuthContext";
-import { useCart } from "../../contexts/CartContext";
-import { useFavorites } from "../../contexts/FavoritesContext";
+import { AppContext } from "../../contexts/AppContext.js";
+import { useAuth } from "../../contexts/AuthContext.js";
+import { useCart } from "../../contexts/CartContext.js";
+import { useFavorites } from "../../contexts/FavoritesContext.js";
 
 export default function Header({
   isScrolled = false,

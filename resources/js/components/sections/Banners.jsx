@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AppContext } from '../../contexts/AppContext.js';
 import '../../../css/app.css';
 
 export default function PromotionalBanner({ bannerNumber, navigateTo }) {

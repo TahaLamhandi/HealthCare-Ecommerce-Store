@@ -2,7 +2,7 @@ import React from 'react';
 import { Leaf, Heart, Sparkles, Apple, Star, ArrowRight, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { AppContext } from '../../contexts/AppContext.js';
 
 export default function Categories({ visibleSections, hoveredCategory, setHoveredCategory, navigateTo }) {
   const { categories, products, loading } = useContext(AppContext);

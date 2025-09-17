@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Search, ArrowRight, Leaf, Sparkles, Heart, Star } from 'lucide-react';
-import { AppContext } from '../contexts/AppContext';
+import { AppContext } from '../contexts/AppContext.js';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/layouts/Header';
 import Footer from '../components/layouts/Footer';

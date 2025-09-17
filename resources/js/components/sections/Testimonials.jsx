@@ -1,7 +1,7 @@
 import { Star, Quote, Heart, ThumbsUp } from "lucide-react";
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "../tools/avatar.jsx";
-import { useFavorites } from "../../contexts/FavoritesContext";
+import { useFavorites } from "../../contexts/FavoritesContext.js";
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import '../../../css/app.css';

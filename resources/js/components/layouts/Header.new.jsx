@@ -1,7 +1,7 @@
 import { Search, Menu, X, ShoppingCart, Copy, MessageCircle, Crown, Award, Percent, Tag, Star, Phone, Heart, Bell, User, Leaf, ChevronDown, Mail, MapPin, ExternalLink } from "lucide-react";
 import { useState, useContext, useRef, useEffect } from "react";
 import { Link } from '@inertiajs/react';
-import { AppContext } from "../../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext.js";
 import { Button } from '../tools/button';
 import { Badge } from '../tools/badge';
 import { Input } from '../tools/input';

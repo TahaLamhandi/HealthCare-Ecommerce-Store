@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, Heart, Trash2, Eye, Star, Sparkles
 } from 'lucide-react';
-import { useFavorites } from '../contexts/FavoritesContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useFavorites } from '../contexts/FavoritesContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const FavoritesPopup = ({ isOpen, onClose, onNavigateToProduct }) => {
   const { favorites, removeFavorite } = useFavorites();

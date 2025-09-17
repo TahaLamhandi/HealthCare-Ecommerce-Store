@@ -8,10 +8,10 @@ import {
   Users, TrendingUp, Globe, Sparkles, Target, Activity, Droplets,
   Sun, Moon, Wind, Flame, Eye, Brain, Zap as Lightning, AlertCircle
 } from 'lucide-react';
-import { AppContext } from '../contexts/AppContext';
-import { useAuth } from '../contexts/AuthContext';
-import { useCart } from '../contexts/CartContext';
-import { useFavorites } from '../contexts/FavoritesContext';
+import { AppContext } from '../contexts/AppContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
+import { useCart } from '../contexts/CartContext.js';
+import { useFavorites } from '../contexts/FavoritesContext.js';
 import { createUniversalPackages, mapPackageNames, createCartItem, getOfferLabel } from '../utils/packageUtils';
 
 // Testimonials data for reviews with Moroccan names

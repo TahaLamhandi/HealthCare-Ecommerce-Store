@@ -9,8 +9,8 @@ import {
   ChevronDown, ChevronUp, AlertCircle, Info,
   Check, PhoneCall, Mail as MailIcon, Home
 } from 'lucide-react';
-import { useCart } from '../contexts/CartContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const CartPage = ({ navigateTo }) => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal, getDeliveryFee, getTotalWithDelivery } = useCart();

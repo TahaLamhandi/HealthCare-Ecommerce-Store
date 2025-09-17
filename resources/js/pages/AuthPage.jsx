@@ -5,7 +5,7 @@ import {
   ArrowRight, CheckCircle, AlertCircle, Sparkles,
   Heart, Leaf, Shield, Star, Home, ArrowLeft
 } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext.js';
 
 const AuthPage = ({ navigateTo, onClose, onSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);

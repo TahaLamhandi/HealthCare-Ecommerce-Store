@@ -4,26 +4,24 @@ import react from '@vitejs/plugin-react-swc'
 
 export default defineConfig({
     plugins: [
-        react({
-            include: "**/*.{js,jsx,ts,tsx}",
-        }),
         laravel({
-            input: ['resources/css/app.css', 'resources/js/main.jsx'],
+            input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
         }),
+        react({
+            jsxRuntime: 'automatic',
+            include: '**/*.{js,jsx,ts,tsx}',
+            exclude: '**/node_modules/**'
+        }),
+        react({
+            jsxImportSource: '@emotion/react',
+            include: '**/*.{js,jsx,ts,tsx}',
+        }),
     ],
-    build: {
-        outDir: 'public/build',
-        assetsDir: 'assets',
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    vendor: ['react', 'react-dom'],
-                    router: ['react-router-dom'],
-                    ui: ['framer-motion', 'lucide-react']
-                }
-            }
-        }
+    resolve: {
+        alias: {
+            '@': '/resources/js',
+        },
     },
     server: {
         hmr: {

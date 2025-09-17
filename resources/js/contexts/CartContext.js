@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from './AuthContext.js';
 
 const CartContext = createContext();
 
@@ -393,9 +393,9 @@ export const CartProvider = ({ children }) => {
     fetchCart
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
+  return React.createElement(
+    CartContext.Provider,
+    { value: value },
+    children
   );
 };

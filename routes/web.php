@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
@@ -16,15 +17,15 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome');
 });
 
 Route::get('/products', function () {
-    return view('products');
+    return Inertia::render('Products/Index');
 });
 
 Route::get('/produits', function () {
-    return view('produits');
+    return Inertia::render('Products/IndexFr');
 });
 
 Route::get('/categories', function () {

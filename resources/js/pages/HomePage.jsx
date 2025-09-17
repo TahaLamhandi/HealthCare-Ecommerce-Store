@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 // Removed createRoot import - not needed anymore
-import { AppProvider } from '../contexts/AppContext';
-import { AppContext } from '../contexts/AppContext';
-import { useAuth } from '../contexts/AuthContext';
-import { useFavorites, FavoritesProvider } from '../contexts/FavoritesContext';
-import { useCart, CartProvider } from '../contexts/CartContext';
+import { AppProvider } from '../contexts/AppContext.js';
+import { AppContext } from '../contexts/AppContext.js';
+import { useAuth } from '../contexts/AuthContext.js';
+import { useFavorites, FavoritesProvider } from '../contexts/FavoritesContext.js';
+import { useCart, CartProvider } from '../contexts/CartContext.js';
 // Removed Header import - handled by App.jsx
-import Hero from '../components/sections/Hero';
+import Hero from '../components/sections/Hero.js';
 import Features from "../components/sections/Features";
 import Products from '../components/sections/Products';
 import Promotions from '../components/sections/Promotions';

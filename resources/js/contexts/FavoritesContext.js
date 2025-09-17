@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from './AuthContext.js';
 
 const FavoritesContext = createContext();
 
@@ -270,9 +270,9 @@ export const FavoritesProvider = ({ children }) => {
     refreshTrigger
   };
 
-  return (
-    <FavoritesContext.Provider value={value}>
-      {children}
-    </FavoritesContext.Provider>
+  return React.createElement(
+    FavoritesContext.Provider,
+    { value: value },
+    children
   );
 };

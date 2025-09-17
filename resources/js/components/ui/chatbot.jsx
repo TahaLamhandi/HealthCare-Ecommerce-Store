@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageCircle, X, Bot, User, Send } from "lucide-react";
-import { useCart } from "../../contexts/CartContext";
-import { useFavorites } from "../../contexts/FavoritesContext";
+import { useCart } from "../../contexts/CartContext.js";
+import { useFavorites } from "../../contexts/FavoritesContext.js";
 import { Button } from "../tools/button";
 import { Input } from "../tools/input";
 import '../../../css/app.css';
